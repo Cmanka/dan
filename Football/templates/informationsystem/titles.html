@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block content %}
+    <h1 class="cover-heading">Information about all titles</h1>
+    <table class="table table-striped table-dark">
+        <thead>
+        <tr>
+            {% if titles.count >= 1 %}
+                <th>#</th>
+                <th>Title name</th>
+                <th>Title description</th>
+                <th>Title premium</th>
+            {% else %}
+                <p>table is empty!</p>
+            {% endif %}
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for title in titles %}
+            <tr>
+                <td>{{ title.pk }}</td>
+                <td>{{ title }}</td>
+                <td>{{ title.description }}</td>
+                <td>{{ title.premium }}</td>
+            </tr>
+        {% endfor %}
+
+
+        </tbody>
+    </table>
+    {% if titles.count >= 1 %}
+        {% include 'inc/pagination.html' %}
+    {% endif %}
+
+{% endblock %}

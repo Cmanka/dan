@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+    <h1 class="cover-heading">Result of a query for the number of players</h1>
+    <p class="lead">go (to <a href="{% url 'home' %}" style="color:black">home</a> or to <a
+            href="{% url 'queries' %}" style="color:black">queries</a>)
+    </p>
+    <p>Count of the players:{{ result.0.0 }}</p>
+{% endblock %}

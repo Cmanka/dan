@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block content %}
+    <h1 class="cover-heading">Information about all players</h1>
+
+    <div class="card-deck mb-3 text-center">
+        {% for player in players %}
+            <div class="card mb-4">
+                <div class="card-header bg-dark">
+                    <h4 class="my-0 font-weight-normal">{{ player }}</h4>
+                </div>
+                <div class="card-body">
+                    {% if player.image %}
+                        <img src="{{ player.image.url }}" alt="" style="height:150px;width:100%;display:block;">
+                    {% else %}
+                        <img src="https://icon-library.com/images/no-image-icon/no-image-icon-1.jpg" alt=""
+                             class="mr-3" style="height:150px;width:100%;display:block;">
+                    {% endif %}
+                </div>
+                <div class="card-footer bg-dark">
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li><strong>Player age:</strong>{{ player.age }}</li>
+                        <li><strong>Player country:</strong>{{ player.country }}</li>
+                        <li><strong>Player phone:</strong>{{ player.phone }}</li>
+                        <li><strong>Player contract:</strong>{{ player.contract }}</li>
+                        <li><strong>Player position:</strong>{{ player.position }}</li>
+                        <li><strong>Player achievement:</strong>{{ player.achievement }}</li>
+                        <li><strong>Player qualification:</strong>{{ player.qualification }}</li>
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% if players.count >= 1 %}
+        {% include 'inc/pagination.html' %}
+    {% endif %}
+
+{% endblock %}

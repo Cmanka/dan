@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block content %}
+    <h3 class="cover-heading">On this page you can get information about all queries in your information
+        system</h3>
+    <br>
+    {% for model in models.items %}
+        <a href="{% url model.1 %}" class="btn btn-lg btn-secondary">{{ model.0 }}</a>
+    {% endfor %}
+    </p>
+
+{% endblock %}
